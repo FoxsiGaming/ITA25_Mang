@@ -1,4 +1,3 @@
-
 function startRandomTimer(minMs, maxMs, onFire) {
   const delay = Math.random() * (maxMs - minMs) + minMs;
   const timeoutId = setTimeout(onFire, delay);
