@@ -12,6 +12,15 @@ window.ReactionTimer = (() => {
     }, delay);
   }
 
+
+  function stopRandomTimer() {
+    if (timeoutId !== undefined) {
+      clearTimeout(timeoutId);
+      timeoutId = undefined;
+    }
+  }
+
+
   function getFormattedReactionTime() {
     if (firedAt === undefined) {
       throw new Error("The reaction timer has not fired yet.");
