@@ -11,7 +11,9 @@ const resetGame = () => {
   timerState = "ready";
 }  
 
-document.addEventListener("click", (event) => {
+const gameScreen = document.getElementById("gameScreen");
+
+gameScreen.addEventListener("click", (event) => {
   if (event.button !== 0) {
     return;
   }
