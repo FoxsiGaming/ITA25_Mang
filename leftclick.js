@@ -35,6 +35,8 @@ document.addEventListener("click", (event) => {
   if (timerState === "waiting") {
     status.textContent = "Too soon! Wait for the signal.";
     document.getElementById("gameScreen").style.backgroundColor = "red";
+    window.ReactionTimer.stopRandomTimer();
+    timerState = "done";
     return;
   }
 

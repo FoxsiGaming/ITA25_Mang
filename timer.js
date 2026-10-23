@@ -1,3 +1,4 @@
+
 window.ReactionTimer = (() => {
   let timeoutId;
   let firedAt;
@@ -36,5 +37,6 @@ window.ReactionTimer = (() => {
   return {
     startRandomTimer,
     getFormattedReactionTime,
+    stopRandomTimer
   };
 })();
