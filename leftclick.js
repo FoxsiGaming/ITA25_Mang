@@ -3,6 +3,14 @@ const clickCount = document.getElementById("clickCount");
 let totalClicks = 0;
 let timerState = "ready";
 
+const resetGame = () => {
+  status.textContent = "Click anywhere to start";
+  gameScreen.style.backgroundColor = "white";
+  totalClicks = 0;
+  clickCount.textContent = `Click count: ${totalClicks}`;
+  timerState = "ready";
+}  
+
 document.addEventListener("click", (event) => {
   if (event.button !== 0) {
     return;
@@ -33,5 +41,11 @@ document.addEventListener("click", (event) => {
   if (timerState === "fired") {
     status.textContent = window.ReactionTimer.getFormattedReactionTime();
     timerState = "done";
+    return;
+  }
+
+  if (timerState === "done") {
+    resetGame();
+    return;
   }
 });
