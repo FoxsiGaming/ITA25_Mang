@@ -14,16 +14,19 @@ document.addEventListener("click", (event) => {
   if (timerState === "ready") {
     timerState = "waiting";
     status.textContent = "Wait for the signal...";
+    document.getElementById("gameScreen").style.backgroundColor = "yellow";
 
     window.ReactionTimer.startRandomTimer(1000, 3000, () => {
       timerState = "fired";
       status.textContent = "Signal! Click now!";
+      document.getElementById("gameScreen").style.backgroundColor = "lightgreen";
     });
     return;
   }
 
   if (timerState === "waiting") {
     status.textContent = "Too soon! Wait for the signal.";
+    document.getElementById("gameScreen").style.backgroundColor = "red";
     return;
   }
 
