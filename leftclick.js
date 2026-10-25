@@ -1,4 +1,5 @@
 const status = document.getElementById("timerStatus");
+const bestTimeDisplay = document.getElementById("bestTime");
 const clickCount = document.getElementById("clickCount");
 let totalClicks = 0;
 let timerState = "ready";
@@ -43,7 +44,11 @@ gameScreen.addEventListener("click", (event) => {
   }
 
   if (timerState === "fired") {
-    status.textContent = window.ReactionTimer.getFormattedReactionTime();
+    const reactionTimeMs = window.ReactionTimer.getReactionTimeMs();
+    const result = trackReaction(reactionTimeMs);
+    const newRecordMessage = result.isNewRecord ? " New best!" : "";
+    status.textContent = `${window.ReactionTimer.getFormattedReactionTime(reactionTimeMs)}.${newRecordMessage}`;
+    bestTimeDisplay.textContent = `Best: ${result.bestTime} ms`;
     timerState = "done";
     return;
   }

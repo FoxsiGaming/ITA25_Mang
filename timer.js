@@ -21,13 +21,15 @@ window.ReactionTimer = (() => {
     }
   }
 
-
-  function getFormattedReactionTime() {
+  function getReactionTimeMs() {
     if (firedAt === undefined) {
       throw new Error("The reaction timer has not fired yet.");
     }
 
-    const elapsedMs = Math.round(performance.now() - firedAt);
+    return Math.round(performance.now() - firedAt);
+  }
+
+  function getFormattedReactionTime(elapsedMs = getReactionTimeMs()) {
     const seconds = Math.floor(elapsedMs / 1000);
     const milliseconds = elapsedMs % 1000;
 
@@ -36,6 +38,7 @@ window.ReactionTimer = (() => {
 
   return {
     startRandomTimer,
+    getReactionTimeMs,
     getFormattedReactionTime,
     stopRandomTimer
   };
