@@ -10,7 +10,7 @@ const resetGame = () => {
   totalClicks = 0;
   clickCount.textContent = `Click count: ${totalClicks}`;
   timerState = "ready";
-}  
+};
 
 const gameScreen = document.getElementById("gameScreen");
 
@@ -30,7 +30,8 @@ gameScreen.addEventListener("click", (event) => {
     window.ReactionTimer.startRandomTimer(1000, 3000, () => {
       timerState = "fired";
       status.textContent = "Signal! Click now!";
-      document.getElementById("gameScreen").style.backgroundColor = "lightgreen";
+      document.getElementById("gameScreen").style.backgroundColor =
+        "lightgreen";
     });
     return;
   }
