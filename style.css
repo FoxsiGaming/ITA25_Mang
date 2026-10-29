@@ -43,22 +43,47 @@ body {
   font-size: clamp(1.5rem, 5vw, 3rem);
 }
 
-/* Navigatsiooni riba - üleval olev menüü särtsu animatsiooniga */
+
 .navbar {
-  background: linear-gradient(135deg, #ff0000, #1eff00);
-  background-size: 400% 400%;
-  animation: ICE 1s ease infinite; /* Värvianimatsioon */
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1.2rem 2rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  height: 100px;
-  box-sizing: border-box;
   position: relative;
-  z-index: 1;
+  overflow: hidden;
+  padding: 2rem 2rem;
+  background: linear-gradient(135deg, #ff0000, #ffee00, #15ff00);
+  background-size: 400% 400%;
+  animation: ICE 18s ease infinite;
+  border-top: 1px solid #4a4d53;
+  text-align: center;
+  color: white;
+}
+
+/* Animatsioone näpi ainuld siis kui sa saad aru kuidas see töötab!
+Ainuld mina ja jumal teab kuidas see pask töötab */
+
+.navbar::before,
+.navbar::after {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: transparent;
+  border: 16px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  animation: wave 30s linear infinite;
+  opacity: 0.6;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.navbar::after {
+  width: 260px;
+  height: 260px;
+  border: 10px solid rgba(255, 255, 255, 0.08);
+  animation-duration: 32s;
+  animation-direction: reverse;
+  opacity: 0.4;
+  pointer-events: none;
 }
 
 .sponsor-container {
@@ -66,6 +91,7 @@ body {
   width: fit-content;
   max-width: calc(100% - 2rem);
   margin: 50px auto 0;
+  padding: 25px;
 }
 
 #Sponsor {
@@ -102,4 +128,49 @@ body {
 
 .robloxLink:active {
   transform: translate(-50%, -50%) scale(0.97);
+}
+
+.footer {
+  position: relative;
+  overflow: hidden;
+  padding: 2rem 2rem;
+  background: linear-gradient(135deg, #ff0000, #ffee00, #15ff00);
+  background-size: 400% 400%;
+  animation: ICE 18s ease infinite;
+  border-top: 1px solid #4a4d53;
+  text-align: center;
+}
+
+
+.footer::before,
+.footer::after {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: transparent;
+  border: 16px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  animation: wave 30s linear infinite;
+  opacity: 0.6;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.footer::after {
+  width: 260px;
+  height: 260px;
+  border: 10px solid rgba(255, 255, 255, 0.08);
+  animation-duration: 32s;
+  animation-direction: reverse;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: white;
 }
