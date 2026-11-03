@@ -1,9 +1,10 @@
 const status = document.getElementById("timerStatus");
 const bestTimeDisplay = document.getElementById("bestTime");
-const clickCount = document.getElementById("clickCount");
+const clickCount = document.getElementById("clickCount"); //ei tea mida click count teeb siin (see pole vajalik)
 let totalClicks = 0;
 let timerState = "ready";
 
+//reset game funktsioon
 const resetGame = () => {
   status.textContent = "Click anywhere to start";
   gameScreen.style.backgroundColor = "white";
@@ -14,6 +15,7 @@ const resetGame = () => {
 
 const gameScreen = document.getElementById("gameScreen");
 
+//mängu event
 gameScreen.addEventListener("click", (event) => {
   if (event.button !== 0) {
     return;
@@ -22,11 +24,13 @@ gameScreen.addEventListener("click", (event) => {
   totalClicks += 1;
   clickCount.textContent = `Click count: ${totalClicks}`;
 
+  //oota
   if (timerState === "ready") {
     timerState = "waiting";
     status.textContent = "Wait for the signal...";
     document.getElementById("gameScreen").style.backgroundColor = "yellow";
 
+    //1 - 3 sec
     window.ReactionTimer.startRandomTimer(1000, 3000, () => {
       timerState = "fired";
       status.textContent = "Signal! Click now!";
@@ -36,6 +40,7 @@ gameScreen.addEventListener("click", (event) => {
     return;
   }
 
+  //vajutad liiga vara
   if (timerState === "waiting") {
     status.textContent = "Too soon! Wait for the signal.";
     document.getElementById("gameScreen").style.backgroundColor = "red";
@@ -44,6 +49,7 @@ gameScreen.addEventListener("click", (event) => {
     return;
   }
 
+  //vajutasid õigel ajal
   if (timerState === "fired") {
     const reactionTimeMs = window.ReactionTimer.getReactionTimeMs();
     const result = trackReaction(reactionTimeMs);
@@ -54,6 +60,7 @@ gameScreen.addEventListener("click", (event) => {
     return;
   }
 
+  //reset game
   if (timerState === "done") {
     resetGame();
     return;
